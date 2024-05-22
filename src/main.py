@@ -54,8 +54,6 @@ class WigTool(FBTool):
         self.AddRegion("FCurveEditor", "FCurveEditor",x,y,w,h)
         self.SetControl("FCurveEditor", self.Editor)
 
-
-
 # define tool name
 toolName = "AnimateBlendShape"
 

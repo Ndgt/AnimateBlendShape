@@ -12,6 +12,10 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     def __init__(self, pwidholder):
         super().__init__(pwidholder)
         self.setupUi(self)
+        self.plycontrol = FBPlayerControl()
 
     def Play(self):
-        FBPlayerControl().Play()
+        if self.plycontrol.IsPlaying:
+            self.plycontrol.Stop()
+        else:
+            self.plycontrol.Play()

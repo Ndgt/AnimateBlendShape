@@ -34,6 +34,9 @@ class Ui_toolWindow(object):
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.pushButton = QPushButton(toolWindow)
         self.pushButton.setObjectName(u"pushButton")
+#if QT_CONFIG(shortcut)
+        self.pushButton.setShortcut(u"")
+#endif // QT_CONFIG(shortcut)
 
         self.verticalLayout_2.addWidget(self.pushButton)
 
@@ -50,8 +53,5 @@ class Ui_toolWindow(object):
     def retranslateUi(self, toolWindow):
         toolWindow.setWindowTitle(QCoreApplication.translate("toolWindow", u"Form", None))
         self.pushButton.setText(QCoreApplication.translate("toolWindow", u"PushButton", None))
-#if QT_CONFIG(shortcut)
-        self.pushButton.setShortcut(QCoreApplication.translate("toolWindow", u"Space", None))
-#endif // QT_CONFIG(shortcut)
     # retranslateUi
 

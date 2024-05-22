@@ -28,7 +28,7 @@
         <string>PushButton</string>
        </property>
        <property name="shortcut">
-        <string>Space</string>
+        <string notr="true"/>
        </property>
       </widget>
      </item>
