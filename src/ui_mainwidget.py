@@ -22,39 +22,31 @@ class Ui_toolWindow(object):
     def setupUi(self, toolWindow):
         if not toolWindow.objectName():
             toolWindow.setObjectName(u"toolWindow")
-        toolWindow.resize(900, 600)
-        
+        toolWindow.resize(900, 300)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(toolWindow.sizePolicy().hasHeightForWidth())
         toolWindow.setSizePolicy(sizePolicy)
-
-        self.verticalLayout_4 = QVBoxLayout(toolWindow)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_3 = QVBoxLayout()
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout = QVBoxLayout()
+        self.verticalLayout = QVBoxLayout(toolWindow)
         self.verticalLayout.setObjectName(u"verticalLayout")
-
         self.pushButton = QPushButton(toolWindow)
         self.pushButton.setObjectName(u"pushButton")
 
         self.verticalLayout.addWidget(self.pushButton)
-        self.verticalLayout_3.addLayout(self.verticalLayout)
 
-        self.FCurveEditorLayout = QVBoxLayout()
-        self.FCurveEditorLayout.setObjectName(u"FCurveEditorLayout")
-
-        self.verticalLayout_3.addLayout(self.FCurveEditorLayout)
-        self.verticalLayout_4.addLayout(self.verticalLayout_3)
 
         self.retranslateUi(toolWindow)
+        self.pushButton.clicked.connect(toolWindow.Play)
+
         QMetaObject.connectSlotsByName(toolWindow)
     # setupUi
 
     def retranslateUi(self, toolWindow):
         toolWindow.setWindowTitle(QCoreApplication.translate("toolWindow", u"Form", None))
         self.pushButton.setText(QCoreApplication.translate("toolWindow", u"PushButton", None))
+#if QT_CONFIG(shortcut)
+        self.pushButton.setShortcut(QCoreApplication.translate("toolWindow", u"Space", None))
+#endif // QT_CONFIG(shortcut)
     # retranslateUi
 

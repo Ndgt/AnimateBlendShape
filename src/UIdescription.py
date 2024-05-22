@@ -13,3 +13,5 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         super().__init__(pwidholder)
         self.setupUi(self)
 
+    def Play(self):
+        FBPlayerControl().Play
