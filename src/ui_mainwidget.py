@@ -35,7 +35,7 @@ class Ui_toolWindow(object):
         self.pushButton = QPushButton(toolWindow)
         self.pushButton.setObjectName(u"pushButton")
 #if QT_CONFIG(shortcut)
-        self.pushButton.setShortcut(u"")
+        self.pushButton.setShortcut(u"Ctrl+S")
 #endif // QT_CONFIG(shortcut)
 
         self.verticalLayout_2.addWidget(self.pushButton)
