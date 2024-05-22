@@ -30,10 +30,15 @@ class Ui_toolWindow(object):
         toolWindow.setSizePolicy(sizePolicy)
         self.verticalLayout = QVBoxLayout(toolWindow)
         self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout_2 = QVBoxLayout()
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.pushButton = QPushButton(toolWindow)
         self.pushButton.setObjectName(u"pushButton")
 
-        self.verticalLayout.addWidget(self.pushButton)
+        self.verticalLayout_2.addWidget(self.pushButton)
+
+
+        self.verticalLayout.addLayout(self.verticalLayout_2)
 
 
         self.retranslateUi(toolWindow)
