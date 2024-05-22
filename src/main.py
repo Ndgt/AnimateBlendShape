@@ -34,14 +34,6 @@ class WigTool(FBTool):
         self.AddRegion("InputControl", "InputControl", x,y,w,h)
         self.SetControl("InputControl", self.WigHolderObject)
 
-        # Secure Layout for FBFCurvesEditor
-        x = FBAddRegionParam(0, FBAttachType.kFBAttachLeft,"")
-        y = FBAddRegionParam(300, FBAttachType.kFBAttachTop,"")
-        w = FBAddRegionParam(0, FBAttachType.kFBAttachRight,"")
-        h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
-        self.AddRegion("FCurveEditor", "FCurveEditor",x,y,w,h)
-        self.SetControl("FCurveEditor", self.Editor)
-
     def __init__(self,name):
         super().__init__(name)
         self.WigHolderObject = WigHolder()
@@ -53,6 +45,16 @@ class WigTool(FBTool):
         self.aprop = self.face.PropertyList.Find("a",False)
         self.pNode = self.aprop.GetAnimationNode()
         self.Editor.AddProperty(self.aprop)
+ 
+        # Secure Layout for FBFCurvesEditor
+        x = FBAddRegionParam(0, FBAttachType.kFBAttachLeft,"")
+        y = FBAddRegionParam(300, FBAttachType.kFBAttachTop,"")
+        w = FBAddRegionParam(0, FBAttachType.kFBAttachRight,"")
+        h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
+        self.AddRegion("FCurveEditor", "FCurveEditor",x,y,w,h)
+        self.SetControl("FCurveEditor", self.Editor)
+
+
 
 # define tool name
 toolName = "AnimateBlendShape"
