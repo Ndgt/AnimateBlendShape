@@ -23,36 +23,33 @@ class Ui_toolWindow(object):
         if not toolWindow.objectName():
             toolWindow.setObjectName(u"toolWindow")
         toolWindow.resize(900, 600)
+        
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(toolWindow.sizePolicy().hasHeightForWidth())
         toolWindow.setSizePolicy(sizePolicy)
+
         self.verticalLayout_4 = QVBoxLayout(toolWindow)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
+
         self.pushButton = QPushButton(toolWindow)
         self.pushButton.setObjectName(u"pushButton")
 
         self.verticalLayout.addWidget(self.pushButton)
-
-
         self.verticalLayout_3.addLayout(self.verticalLayout)
 
         self.FCurveEditorLayout = QVBoxLayout()
         self.FCurveEditorLayout.setObjectName(u"FCurveEditorLayout")
 
         self.verticalLayout_3.addLayout(self.FCurveEditorLayout)
-
-
         self.verticalLayout_4.addLayout(self.verticalLayout_3)
 
-
         self.retranslateUi(toolWindow)
-
         QMetaObject.connectSlotsByName(toolWindow)
     # setupUi
 

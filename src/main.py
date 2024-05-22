@@ -26,12 +26,21 @@ class WigHolder(FBWidgetHolder):
 # declare as FBTool 
 class WigTool(FBTool):
     def PopulateLayout(self):
+        # Secure Layout for Input Control / Qt 
         x = FBAddRegionParam(0, FBAttachType.kFBAttachLeft,"")
         y = FBAddRegionParam(0, FBAttachType.kFBAttachTop,"")
         w = FBAddRegionParam(0, FBAttachType.kFBAttachRight,"")
         h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
-        self.AddRegion("AnimateBlendShape", "AnimateBlendShape", x,y,w,h)
-        self.SetControl("AnimateBlendShape", self.WigHolderObject)
+        self.AddRegion("InputControl", "InputControl", x,y,w,h)
+        self.SetControl("InputControl", self.WigHolderObject)
+
+        # Secure Layout for FBFCurvesEditor
+        x = FBAddRegionParam(0, FBAttachType.kFBAttachLeft,"")
+        y = FBAddRegionParam(300, FBAttachType.kFBAttachTop,"")
+        w = FBAddRegionParam(0, FBAttachType.kFBAttachRight,"")
+        h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
+        self.AddRegion("FCurveEditor", "FCurveEditor",x,y,w,h)
+        self.SetControl("FCurveEditor", self.Editor)
 
     def __init__(self,name):
         super().__init__(name)
@@ -39,6 +48,11 @@ class WigTool(FBTool):
         self.PopulateLayout()
         self.StartSizeX = 900
         self.StartSizeY = 600
+        self.Editor = FBFCurveEditor()
+        self.face = FBFindModelByLabelName("Face")
+        self.aprop = self.face.PropertyList.Find("a",False)
+        self.pNode = self.aprop.GetAnimationNode()
+        self.Editor.AddProperty(self.aprop)
 
 # define tool name
 toolName = "AnimateBlendShape"
