@@ -363,10 +363,10 @@ class Ui_toolWindow(object):
 
 
         self.retranslateUi(toolWindow)
-        self.playButton.clicked.connect(toolWindow.Play)
 
         self.tabWidget.setCurrentIndex(1)
 
+        self.playButton.clicked.connect(toolWindow.Play)
         self.ChooseLyricsButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ChooseLyrics)
         #self.ConvertTextButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ConvertText)
         self.playspeedSpinBox.connect(QtCore.SIGNAL("valueChanged(double)"),toolWindow.ChangePlaySpeed)
