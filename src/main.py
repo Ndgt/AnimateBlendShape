@@ -39,7 +39,7 @@ class WigTool(FBTool):
         self.WigHolderObject = WigHolder()
         self.PopulateLayout()
         self.StartSizeX = 900
-        self.StartSizeY = 710
+        self.StartSizeY = 600
         self.Editor = FBFCurveEditor()
         self.face = FBFindModelByLabelName("Face")
         self.aprop = self.face.PropertyList.Find("a",False)
