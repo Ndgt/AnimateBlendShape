@@ -22,13 +22,16 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.lpopup.Style = FBFilePopupStyle.kFBFilePopupOpen
         self.lpopup.Filter = "*"
         self.lcheck = self.lpopup.Execute()
+        self.font = self.lineEdit_2.font()
+        self.font.setPointSize(12)
+        self.lineEdit_2.setFont(self.font)
         if self.lcheck:
-            if self.lpopup.FIleName[-4:] == ".txt":
+            if self.lpopup.FileName[-4:] == ".txt":
                 f = open(self.lpopup.FileName, "r")
                 data = f.readlines()
                 for add_txt in data:
-                    current_txt = self.lineEdit_2.text()
-                    self.lineEdit_2.setText(current_txt+add_txt)
+                    current_txt = self.lineEdit_2.text() + "\n"
+                    self.lineEdit_2.setText(current_txt + add_txt)
             else:
                 FBMessageBox("Caution","Error : Selected file is not text file.","OK")
 

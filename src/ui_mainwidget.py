@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDoubleSpinBox,
-    QGroupBox, QHBoxLayout, QLabel, QLineEdit,
+    QGroupBox, QHBoxLayout, QLabel, QLineEdit, QMultiLineEdit,
     QPushButton, QSizePolicy, QSlider, QSpacerItem,
     QSpinBox, QTabWidget, QToolButton, QVBoxLayout,
     QWidget)
@@ -73,7 +73,7 @@ class Ui_toolWindow(object):
 
         self.verticalLayout_11.addLayout(self.horizontalLayout_2)
 
-        self.lineEdit_2 = QLineEdit(self.tab_2)
+        self.lineEdit_2 = QMultiLineEdit(self.tab_2)
         self.lineEdit_2.setObjectName(u"lineEdit_2")
         sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         sizePolicy2.setHorizontalStretch(0)
@@ -368,7 +368,7 @@ class Ui_toolWindow(object):
         self.tabWidget.setCurrentIndex(1)
 
         self.ChooseLyricsButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ChooseLyrics)
-        self.ConvertTextButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ConvertText)
+        #self.ConvertTextButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ConvertText)
 
         QMetaObject.connectSlotsByName(toolWindow)
     # setupUi
