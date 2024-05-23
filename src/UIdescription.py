@@ -54,29 +54,32 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     #def ConvertText(self):
 
 
-
+    '''
+    player control methods 
+    '''
     def Play(self):
         if self.playcontrol.IsPlaying:
             self.playcontrol.Stop()
         else:
             self.playcontrol.Play()
 
-    def ChangePlaySpeed(self, double):
+    def ChangePlaySpeed(self, spindouble):
         # if isPlaying, change speed and restart
         if self.playcontrol.IsPlaying:
             self.playcontrol.Stop()
-            self.playcontrol.SetPlaySpeed(double)
+            self.playcontrol.SetPlaySpeed(spindouble)
             self.playcontrol.Play()
         else:
-            self.playcontrol.SetPlaySpeed(double)
+            self.playcontrol.SetPlaySpeed(spindouble)
 
-    def PlayerSlide(self,int):
+    def PlayerSlide(self, sliderint):
         # slider returns int : 0 ~ 99
-        current_frame_double = (self.endframe - self.startframe) * (int / 100)
+        specified_frame_double = (self.endframe - self.startframe) * (sliderint / 100)
+        specified_frame = int(specified_frame_double)
         # restart if isPlaying
         if self.playcontrol.IsPlaying:
             # set current frame (FBTime(0,0,0,specified frame))
-            self.playcontrol.Goto(FBTime(0,0,0,int(current_frame_double)))
+            self.playcontrol.Goto(FBTime(0,0,0,specified_frame))
             self.playcontrol.Play
         else:
-            self.playcontrol.Goto(FBTime(0,0,0,int(current_frame_double)))
+            self.playcontrol.Goto(FBTime(0,0,0,specified_frame))
