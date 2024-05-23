@@ -30,7 +30,7 @@ class WigTool(FBTool):
         x = FBAddRegionParam(0, FBAttachType.kFBAttachLeft,"")
         y = FBAddRegionParam(0, FBAttachType.kFBAttachTop,"")
         w = FBAddRegionParam(0, FBAttachType.kFBAttachRight,"")
-        h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
+        h = FBAddRegionParam(0, FBAttachType.kFBAttachHeight,"")
         self.AddRegion("InputControl", "InputControl", x,y,w,h)
         self.SetControl("InputControl", self.WigHolderObject)
 
