@@ -33,6 +33,12 @@
      </property>
      <item>
       <widget class="QTabWidget" name="tabWidget">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="currentIndex">
         <number>0</number>
        </property>
@@ -40,16 +46,6 @@
         <attribute name="title">
          <string>Navigate Key Input</string>
         </attribute>
-        <widget class="QTableView" name="tableView">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>10</y>
-           <width>371</width>
-           <height>291</height>
-          </rect>
-         </property>
-        </widget>
        </widget>
        <widget class="QWidget" name="tab_2">
         <attribute name="title">
@@ -90,7 +86,7 @@
                <number>5</number>
               </property>
               <property name="topMargin">
-               <number>5</number>
+               <number>0</number>
               </property>
               <property name="rightMargin">
                <number>5</number>

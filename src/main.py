@@ -39,7 +39,7 @@ class WigTool(FBTool):
         self.WigHolderObject = WigHolder()
         self.PopulateLayout()
         self.StartSizeX = 900
-        self.StartSizeY = 600
+        self.StartSizeY = 710
         self.Editor = FBFCurveEditor()
         self.face = FBFindModelByLabelName("Face")
         self.aprop = self.face.PropertyList.Find("a",False)
@@ -48,7 +48,7 @@ class WigTool(FBTool):
  
         # Secure Layout for FBFCurvesEditor
         x = FBAddRegionParam(0, FBAttachType.kFBAttachLeft,"")
-        y = FBAddRegionParam(420, FBAttachType.kFBAttachTop,"")
+        y = FBAddRegionParam(360, FBAttachType.kFBAttachTop,"")
         w = FBAddRegionParam(0, FBAttachType.kFBAttachRight,"")
         h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
         self.AddRegion("FCurveEditor", "FCurveEditor",x,y,w,h)
