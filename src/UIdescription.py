@@ -8,13 +8,29 @@ except:
 
 from ui_mainwidget import Ui_toolWindow
 import test
+import makeList
 
 class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     def __init__(self, pwidholder):
         super().__init__(pwidholder)
         self.setupUi(self)
-        self.plycontrol = FBPlayerControl()
 
+        # add components of each comboBox
+        self.comboBox.addItem("")
+        self.comboBox_2.addItem("")
+        self.comboBox_3.addItem("")
+        self.comboBox_4.addItem("")
+        self.comboBox_5.addItem("") 
+        
+        self.shapeList = makeList.ReturnList("Allshapekey")
+        for name in self.shapeList:
+            self.comboBox_1.addItem(name)
+            self.comboBox_2.addItem(name)
+            self.comboBox_3.addItem(name)
+            self.comboBox_4.addItem(name)
+            self.comboBox_5.addItem(name)
+
+        self.plycontrol = FBPlayerControl()
 
     def ChooseLyrics(self):
         self.lpopup = FBFilePopup()
@@ -22,16 +38,13 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.lpopup.Style = FBFilePopupStyle.kFBFilePopupOpen
         self.lpopup.Filter = "*"
         self.lcheck = self.lpopup.Execute()
-        self.font = self.lineEdit_2.font()
-        self.font.setPointSize(12)
-        self.lineEdit_2.setFont(self.font)
+        self.lineEdit_2.setFontPointSize(11)
         if self.lcheck:
             if self.lpopup.FileName[-4:] == ".txt":
                 f = open(self.lpopup.FileName, "r")
                 data = f.readlines()
                 for add_txt in data:
-                    current_txt = self.lineEdit_2.text() + "\n"
-                    self.lineEdit_2.setText(current_txt + add_txt)
+                    self.lineEdit_2.insertPlainText("\n" + add_txt)
             else:
                 FBMessageBox("Caution","Error : Selected file is not text file.","OK")
 
