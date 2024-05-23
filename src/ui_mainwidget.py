@@ -25,12 +25,13 @@ class Ui_toolWindow(object):
     def setupUi(self, toolWindow):
         if not toolWindow.objectName():
             toolWindow.setObjectName(u"toolWindow")
-        toolWindow.resize(900, 630)
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
+        toolWindow.resize(900, 350)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(toolWindow.sizePolicy().hasHeightForWidth())
         toolWindow.setSizePolicy(sizePolicy)
+        toolWindow.setMaximumSize(QSize(16777215, 350))
         self.verticalLayout_7 = QVBoxLayout(toolWindow)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
         self.horizontalLayout_6 = QHBoxLayout()
@@ -311,10 +312,6 @@ class Ui_toolWindow(object):
 
 
         self.verticalLayout_7.addLayout(self.horizontalLayout_6)
-
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.verticalLayout_7.addItem(self.verticalSpacer_2)
 
 
         self.retranslateUi(toolWindow)
