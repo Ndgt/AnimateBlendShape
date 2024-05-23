@@ -1,51 +1,26 @@
-from pyfbsdk import*
-from pyfbsdk_additions import*
+# coding: shift-jis
 
-Editor = FBFCurveEditor()
+import sys
+# rye環境なので追加
+sys.path.append(r"C:\Users\owner\AppData\Local\Programs\Python\Python311\Lib\site-packages")
+from pykakasi import kakasi
 
-def PopulateLayout(mainLyt):
-    #create Spread
+args = sys.argv
 
-    
-    x = FBAddRegionParam(0,FBAttachType.kFBAttachLeft,"")
-    y = FBAddRegionParam(0,FBAttachType.kFBAttachTop,"")
-    w = FBAddRegionParam(0,FBAttachType.kFBAttachRight,"")
-    h = FBAddRegionParam(0,FBAttachType.kFBAttachBottom,"")
-    
-    face = FBFindModelByLabelName("Face")
-
-    for prop in face.PropertyList:
-        if prop.Name == "a":
-            pCurve = prop.GetAnimationNode().FCurve
-            pNode = prop.GetAnimationNode()
-
-    mainLyt.AddRegion("FCurveEditor","testEditor", x, y, w, h)
-    mainLyt.SetControl("FCurveEditor",Editor)
-    Editor.AddAnimationNode(pNode)
-
-def CreateTool():    
-    # Tool creation will serve as the hub for all other controls
-    t = FBCreateUniqueTool("FCurve editor sample")
-
-    t.StartSizeX = 300
-    t.StartSizeY = 300
-
-    PopulateLayout(t)
-    ShowTool(t)
-
-
-CreateTool()
-
-
-face = FBFindModelByLabelName("Face")
-
-global b 
-
-for prop in face.PropertyList:
-    if prop.Name == "a":
-        b = prop
-
-for prop in Editor.PropertyList:
-    print(prop.Name)
-
-Editor.AddProperty(b)
+if len(args) > 1:
+    kks = kakasi()
+    f = open(args[1],"r")
+    data = f.readlines()
+    for words in data:
+        if not words == '\n':
+            line = words.strip().replace(" ", "").replace("？","")
+            result = kks.convert(line)
+            dst_str = ""
+            for j in range(len(result)):
+                if len(args) > 2 and args[2] == "hira":
+                    dst_str += result[j]["hira"] # 平仮名
+                else:
+                    dst_str += result[j]["hepburn"] # アルファベット
+            print(dst_str)
+else:
+    print("no arguments")
