@@ -80,6 +80,6 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         if self.playcontrol.IsPlaying:
             # set current frame (FBTime(0,0,0,specified frame))
             self.playcontrol.Goto(FBTime(0,0,0,specified_frame))
-            self.playcontrol.Play
+            self.playcontrol.Play()
         else:
             self.playcontrol.Goto(FBTime(0,0,0,specified_frame))
