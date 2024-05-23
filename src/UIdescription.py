@@ -6,9 +6,9 @@ try:
 except:
     from PySide2 import QtWidgets
 
-from ui_mainwindow import Ui_MainWindow
+from ui_mainwidget import Ui_toolWindow
 
-class HoldedWidget(QtWidgets.QWidget, Ui_MainWindow):
+class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     def __init__(self, pwidholder):
         super().__init__(pwidholder)
         self.setupUi(self)
