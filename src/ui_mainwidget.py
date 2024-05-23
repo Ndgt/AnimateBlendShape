@@ -177,27 +177,40 @@ class Ui_toolWindow(object):
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.checkBox = QCheckBox(self.SelectShapeKeyGroupBox)
         self.checkBox.setObjectName(u"checkBox")
+        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.checkBox.sizePolicy().hasHeightForWidth())
+        self.checkBox.setSizePolicy(sizePolicy5)
         self.checkBox.setTristate(False)
 
         self.verticalLayout_8.addWidget(self.checkBox)
 
         self.checkBox_2 = QCheckBox(self.SelectShapeKeyGroupBox)
         self.checkBox_2.setObjectName(u"checkBox_2")
+        sizePolicy5.setHeightForWidth(self.checkBox_2.sizePolicy().hasHeightForWidth())
+        self.checkBox_2.setSizePolicy(sizePolicy5)
 
         self.verticalLayout_8.addWidget(self.checkBox_2)
 
         self.checkBox_3 = QCheckBox(self.SelectShapeKeyGroupBox)
         self.checkBox_3.setObjectName(u"checkBox_3")
+        sizePolicy5.setHeightForWidth(self.checkBox_3.sizePolicy().hasHeightForWidth())
+        self.checkBox_3.setSizePolicy(sizePolicy5)
 
         self.verticalLayout_8.addWidget(self.checkBox_3)
 
         self.checkBox_4 = QCheckBox(self.SelectShapeKeyGroupBox)
         self.checkBox_4.setObjectName(u"checkBox_4")
+        sizePolicy5.setHeightForWidth(self.checkBox_4.sizePolicy().hasHeightForWidth())
+        self.checkBox_4.setSizePolicy(sizePolicy5)
 
         self.verticalLayout_8.addWidget(self.checkBox_4)
 
         self.checkBox_5 = QCheckBox(self.SelectShapeKeyGroupBox)
         self.checkBox_5.setObjectName(u"checkBox_5")
+        sizePolicy5.setHeightForWidth(self.checkBox_5.sizePolicy().hasHeightForWidth())
+        self.checkBox_5.setSizePolicy(sizePolicy5)
 
         self.verticalLayout_8.addWidget(self.checkBox_5)
 
@@ -226,16 +239,20 @@ class Ui_toolWindow(object):
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.playButton = QPushButton(self.PlayerControlGroupBox)
         self.playButton.setObjectName(u"playButton")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.playButton.sizePolicy().hasHeightForWidth())
-        self.playButton.setSizePolicy(sizePolicy5)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.playButton.sizePolicy().hasHeightForWidth())
+        self.playButton.setSizePolicy(sizePolicy6)
 #if QT_CONFIG(shortcut)
         self.playButton.setShortcut(u"Ctrl+S")
 #endif // QT_CONFIG(shortcut)
 
         self.horizontalLayout_9.addWidget(self.playButton)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_9.addItem(self.horizontalSpacer)
 
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -251,9 +268,6 @@ class Ui_toolWindow(object):
 
         self.playspeedSpinBox = QDoubleSpinBox(self.PlayerControlGroupBox)
         self.playspeedSpinBox.setObjectName(u"playspeedSpinBox")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
-        sizePolicy6.setHorizontalStretch(0)
-        sizePolicy6.setVerticalStretch(0)
         sizePolicy6.setHeightForWidth(self.playspeedSpinBox.sizePolicy().hasHeightForWidth())
         self.playspeedSpinBox.setSizePolicy(sizePolicy6)
         self.playspeedSpinBox.setMinimum(0.100000000000000)
