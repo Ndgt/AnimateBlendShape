@@ -25,7 +25,7 @@ class Ui_toolWindow(object):
     def setupUi(self, toolWindow):
         if not toolWindow.objectName():
             toolWindow.setObjectName(u"toolWindow")
-        toolWindow.resize(900, 660)
+        toolWindow.resize(900, 630)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
