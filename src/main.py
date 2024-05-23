@@ -48,7 +48,7 @@ class WigTool(FBTool):
  
         # Secure Layout for FBFCurvesEditor
         x = FBAddRegionParam(0, FBAttachType.kFBAttachLeft,"")
-        y = FBAddRegionParam(300, FBAttachType.kFBAttachTop,"")
+        y = FBAddRegionParam(420, FBAttachType.kFBAttachTop,"")
         w = FBAddRegionParam(0, FBAttachType.kFBAttachRight,"")
         h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
         self.AddRegion("FCurveEditor", "FCurveEditor",x,y,w,h)
