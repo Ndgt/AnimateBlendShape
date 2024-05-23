@@ -30,7 +30,7 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
             self.comboBox_4.addItem(name)
             self.comboBox_5.addItem(name)
 
-        self.plycontrol = FBPlayerControl()
+        self.playcontrol = FBPlayerControl()
 
     def ChooseLyrics(self):
         self.lpopup = FBFilePopup()
@@ -51,8 +51,14 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     #def ConvertText(self):
 
 
+
     def Play(self):
-        if self.plycontrol.IsPlaying:
-            self.plycontrol.Stop()
+        if self.playcontrol.IsPlaying:
+            self.playcontrol.Stop()
         else:
-            self.plycontrol.Play()
+            self.playcontrol.Play()
+
+    def ChangePlaySpeed(self, double):
+        self.playcontrol.SetPlaySpeed(double)
+
+    

@@ -369,6 +369,7 @@ class Ui_toolWindow(object):
 
         self.ChooseLyricsButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ChooseLyrics)
         #self.ConvertTextButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ConvertText)
+        self.playspeedSpinBox.connect(QtCore.SIGNAL("valueChanged(double)"),toolWindow.ChangePlaySpeed)
 
         QMetaObject.connectSlotsByName(toolWindow)
     # setupUi
