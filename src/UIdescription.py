@@ -30,7 +30,10 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
             self.comboBox_4.addItem(name)
             self.comboBox_5.addItem(name)
 
+        # player controls
         self.playcontrol = FBPlayerControl()
+        self.startframe = self.playcontrol.LoopStart.GetFrame()
+        self.endframe = self.playcontrol.LoopStop.GetFrame()
 
     def ChooseLyrics(self):
         self.lpopup = FBFilePopup()
@@ -59,6 +62,21 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
             self.playcontrol.Play()
 
     def ChangePlaySpeed(self, double):
-        self.playcontrol.SetPlaySpeed(double)
+        # if isPlaying, change speed and restart
+        if self.playcontrol.IsPlaying:
+            self.playcontrol.Stop()
+            self.playcontrol.SetPlaySpeed(double)
+            self.playcontrol.Play()
+        else:
+            self.playcontrol.SetPlaySpeed(double)
 
-    
+    def PlayerSlide(self,int):
+        # slider returns int : 0 ~ 99
+        current_frame_double = (self.endframe - self.startframe) * (int / 100)
+        # restart if isPlaying
+        if self.playcontrol.IsPlaying:
+            # set current frame (FBTime(0,0,0,specified frame))
+            self.playcontrol.Goto(FBTime(0,0,0,int(current_frame_double)))
+            self.playcontrol.Play
+        else:
+            self.playcontrol.Goto(FBTime(0,0,0,int(current_frame_double)))
