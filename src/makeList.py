@@ -2,14 +2,11 @@ import pyfbsdk
 from pyfbsdk import*
 from pyfbsdk_additions import*
 
-"""
-ReturnList(option) : 
- function to return List depending on option below.
- 1. Allshapekey -> return List of all shapekey which will be used for user selection in UI
- 2. shapename -> return List of models which has specified shapekey 
-"""
 
-def ReturnList(option): # Allshapekey/shapename
+# return List of all shapekey which will be used for user selection in UI
+
+
+def ReturnList():
     OutputList = list()
     
     def ExamineAllObjects(model):
@@ -20,16 +17,9 @@ def ReturnList(option): # Allshapekey/shapename
                     for i in range(geo.ShapeGetCount()):
                         name = geo.ShapeGetName(i)
                         
-                        # for SKListForUserSelect
-                        if option == "Allshapekey": 
-                            if not name in OutputList:
-                                OutputList.append(name)
+                        if not name in OutputList:
+                            OutputList.append(name)
                 
-                        # for vowelSKcontainModelList
-                        if name == option:
-                            OutputList.append(child.Name)
-                            break
-
                 ExamineAllObjects(child)
     
     ExamineAllObjects(FBSystem().Scene.RootModel)        

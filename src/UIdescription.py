@@ -22,9 +22,9 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.comboBox_4.addItem("")
         self.comboBox_5.addItem("") 
         
-        self.shapeList = makeList.ReturnList("Allshapekey")
+        self.shapeList = makeList.ReturnList
         for name in self.shapeList:
-            self.comboBox_1.addItem(name)
+            self.comboBox.addItem(name)
             self.comboBox_2.addItem(name)
             self.comboBox_3.addItem(name)
             self.comboBox_4.addItem(name)
