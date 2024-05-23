@@ -389,9 +389,6 @@
                 <property name="text">
                  <string>Play</string>
                 </property>
-                <property name="shortcut">
-                 <string notr="true">Ctrl+S</string>
-                </property>
                </widget>
               </item>
               <item>

@@ -8,6 +8,7 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
+from PySide6 import QtCore
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
@@ -49,6 +50,42 @@ class Ui_toolWindow(object):
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
+        self.verticalLayout_12 = QVBoxLayout(self.tab_2)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.verticalLayout_11 = QVBoxLayout()
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.ChooseLyricsButton = QPushButton(self.tab_2)
+        self.ChooseLyricsButton.setObjectName(u"ChooseLyricsButton")
+
+        self.horizontalLayout_2.addWidget(self.ChooseLyricsButton)
+
+        self.ConvertTextButton = QPushButton(self.tab_2)
+        self.ConvertTextButton.setObjectName(u"ConvertTextButton")
+
+        self.horizontalLayout_2.addWidget(self.ConvertTextButton)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
+
+
+        self.verticalLayout_11.addLayout(self.horizontalLayout_2)
+
+        self.lineEdit_2 = QLineEdit(self.tab_2)
+        self.lineEdit_2.setObjectName(u"lineEdit_2")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.lineEdit_2.sizePolicy().hasHeightForWidth())
+        self.lineEdit_2.setSizePolicy(sizePolicy2)
+
+        self.verticalLayout_11.addWidget(self.lineEdit_2)
+
+
+        self.verticalLayout_12.addLayout(self.verticalLayout_11)
+
         self.tabWidget.addTab(self.tab_2, "")
 
         self.horizontalLayout_6.addWidget(self.tabWidget)
@@ -71,22 +108,22 @@ class Ui_toolWindow(object):
         self.horizontalLayout_10.setContentsMargins(5, 0, 5, 5)
         self.label_2 = QLabel(self.SelectShapeKeyGroupBox)
         self.label_2.setObjectName(u"label_2")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
-        self.label_2.setSizePolicy(sizePolicy2)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy3)
         self.label_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.horizontalLayout_10.addWidget(self.label_2)
 
         self.lineEdit = QLineEdit(self.SelectShapeKeyGroupBox)
         self.lineEdit.setObjectName(u"lineEdit")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Fixed)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.lineEdit.sizePolicy().hasHeightForWidth())
-        self.lineEdit.setSizePolicy(sizePolicy3)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.lineEdit.sizePolicy().hasHeightForWidth())
+        self.lineEdit.setSizePolicy(sizePolicy4)
 
         self.horizontalLayout_10.addWidget(self.lineEdit)
 
@@ -134,39 +171,39 @@ class Ui_toolWindow(object):
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.comboBox = QComboBox(self.SelectShapeKeyGroupBox)
         self.comboBox.setObjectName(u"comboBox")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Minimum)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.comboBox.sizePolicy().hasHeightForWidth())
-        self.comboBox.setSizePolicy(sizePolicy4)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Minimum)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.comboBox.sizePolicy().hasHeightForWidth())
+        self.comboBox.setSizePolicy(sizePolicy5)
 
         self.verticalLayout_4.addWidget(self.comboBox)
 
         self.comboBox_2 = QComboBox(self.SelectShapeKeyGroupBox)
         self.comboBox_2.setObjectName(u"comboBox_2")
-        sizePolicy4.setHeightForWidth(self.comboBox_2.sizePolicy().hasHeightForWidth())
-        self.comboBox_2.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.comboBox_2.sizePolicy().hasHeightForWidth())
+        self.comboBox_2.setSizePolicy(sizePolicy5)
 
         self.verticalLayout_4.addWidget(self.comboBox_2)
 
         self.comboBox_3 = QComboBox(self.SelectShapeKeyGroupBox)
         self.comboBox_3.setObjectName(u"comboBox_3")
-        sizePolicy4.setHeightForWidth(self.comboBox_3.sizePolicy().hasHeightForWidth())
-        self.comboBox_3.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.comboBox_3.sizePolicy().hasHeightForWidth())
+        self.comboBox_3.setSizePolicy(sizePolicy5)
 
         self.verticalLayout_4.addWidget(self.comboBox_3)
 
         self.comboBox_4 = QComboBox(self.SelectShapeKeyGroupBox)
         self.comboBox_4.setObjectName(u"comboBox_4")
-        sizePolicy4.setHeightForWidth(self.comboBox_4.sizePolicy().hasHeightForWidth())
-        self.comboBox_4.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.comboBox_4.sizePolicy().hasHeightForWidth())
+        self.comboBox_4.setSizePolicy(sizePolicy5)
 
         self.verticalLayout_4.addWidget(self.comboBox_4)
 
         self.comboBox_5 = QComboBox(self.SelectShapeKeyGroupBox)
         self.comboBox_5.setObjectName(u"comboBox_5")
-        sizePolicy4.setHeightForWidth(self.comboBox_5.sizePolicy().hasHeightForWidth())
-        self.comboBox_5.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.comboBox_5.sizePolicy().hasHeightForWidth())
+        self.comboBox_5.setSizePolicy(sizePolicy5)
 
         self.verticalLayout_4.addWidget(self.comboBox_5)
 
@@ -177,40 +214,40 @@ class Ui_toolWindow(object):
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.checkBox = QCheckBox(self.SelectShapeKeyGroupBox)
         self.checkBox.setObjectName(u"checkBox")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.checkBox.sizePolicy().hasHeightForWidth())
-        self.checkBox.setSizePolicy(sizePolicy5)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.checkBox.sizePolicy().hasHeightForWidth())
+        self.checkBox.setSizePolicy(sizePolicy6)
         self.checkBox.setTristate(False)
 
         self.verticalLayout_8.addWidget(self.checkBox)
 
         self.checkBox_2 = QCheckBox(self.SelectShapeKeyGroupBox)
         self.checkBox_2.setObjectName(u"checkBox_2")
-        sizePolicy5.setHeightForWidth(self.checkBox_2.sizePolicy().hasHeightForWidth())
-        self.checkBox_2.setSizePolicy(sizePolicy5)
+        sizePolicy6.setHeightForWidth(self.checkBox_2.sizePolicy().hasHeightForWidth())
+        self.checkBox_2.setSizePolicy(sizePolicy6)
 
         self.verticalLayout_8.addWidget(self.checkBox_2)
 
         self.checkBox_3 = QCheckBox(self.SelectShapeKeyGroupBox)
         self.checkBox_3.setObjectName(u"checkBox_3")
-        sizePolicy5.setHeightForWidth(self.checkBox_3.sizePolicy().hasHeightForWidth())
-        self.checkBox_3.setSizePolicy(sizePolicy5)
+        sizePolicy6.setHeightForWidth(self.checkBox_3.sizePolicy().hasHeightForWidth())
+        self.checkBox_3.setSizePolicy(sizePolicy6)
 
         self.verticalLayout_8.addWidget(self.checkBox_3)
 
         self.checkBox_4 = QCheckBox(self.SelectShapeKeyGroupBox)
         self.checkBox_4.setObjectName(u"checkBox_4")
-        sizePolicy5.setHeightForWidth(self.checkBox_4.sizePolicy().hasHeightForWidth())
-        self.checkBox_4.setSizePolicy(sizePolicy5)
+        sizePolicy6.setHeightForWidth(self.checkBox_4.sizePolicy().hasHeightForWidth())
+        self.checkBox_4.setSizePolicy(sizePolicy6)
 
         self.verticalLayout_8.addWidget(self.checkBox_4)
 
         self.checkBox_5 = QCheckBox(self.SelectShapeKeyGroupBox)
         self.checkBox_5.setObjectName(u"checkBox_5")
-        sizePolicy5.setHeightForWidth(self.checkBox_5.sizePolicy().hasHeightForWidth())
-        self.checkBox_5.setSizePolicy(sizePolicy5)
+        sizePolicy6.setHeightForWidth(self.checkBox_5.sizePolicy().hasHeightForWidth())
+        self.checkBox_5.setSizePolicy(sizePolicy6)
 
         self.verticalLayout_8.addWidget(self.checkBox_5)
 
@@ -239,14 +276,11 @@ class Ui_toolWindow(object):
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.playButton = QPushButton(self.PlayerControlGroupBox)
         self.playButton.setObjectName(u"playButton")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
-        sizePolicy6.setHorizontalStretch(0)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.playButton.sizePolicy().hasHeightForWidth())
-        self.playButton.setSizePolicy(sizePolicy6)
-#if QT_CONFIG(shortcut)
-        self.playButton.setShortcut(u"Ctrl+S")
-#endif // QT_CONFIG(shortcut)
+        sizePolicy7 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
+        sizePolicy7.setHorizontalStretch(0)
+        sizePolicy7.setVerticalStretch(0)
+        sizePolicy7.setHeightForWidth(self.playButton.sizePolicy().hasHeightForWidth())
+        self.playButton.setSizePolicy(sizePolicy7)
 
         self.horizontalLayout_9.addWidget(self.playButton)
 
@@ -260,16 +294,16 @@ class Ui_toolWindow(object):
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.label_3 = QLabel(self.PlayerControlGroupBox)
         self.label_3.setObjectName(u"label_3")
-        sizePolicy2.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
-        self.label_3.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
+        self.label_3.setSizePolicy(sizePolicy3)
         self.label_3.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.horizontalLayout_7.addWidget(self.label_3)
 
         self.playspeedSpinBox = QDoubleSpinBox(self.PlayerControlGroupBox)
         self.playspeedSpinBox.setObjectName(u"playspeedSpinBox")
-        sizePolicy6.setHeightForWidth(self.playspeedSpinBox.sizePolicy().hasHeightForWidth())
-        self.playspeedSpinBox.setSizePolicy(sizePolicy6)
+        sizePolicy7.setHeightForWidth(self.playspeedSpinBox.sizePolicy().hasHeightForWidth())
+        self.playspeedSpinBox.setSizePolicy(sizePolicy7)
         self.playspeedSpinBox.setMinimum(0.100000000000000)
         self.playspeedSpinBox.setMaximum(2.000000000000000)
         self.playspeedSpinBox.setSingleStep(0.100000000000000)
@@ -284,16 +318,16 @@ class Ui_toolWindow(object):
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
         self.label = QLabel(self.PlayerControlGroupBox)
         self.label.setObjectName(u"label")
-        sizePolicy2.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy2)
+        sizePolicy3.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy3)
         self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.horizontalLayout_8.addWidget(self.label)
 
         self.volumeSpinBox = QSpinBox(self.PlayerControlGroupBox)
         self.volumeSpinBox.setObjectName(u"volumeSpinBox")
-        sizePolicy6.setHeightForWidth(self.volumeSpinBox.sizePolicy().hasHeightForWidth())
-        self.volumeSpinBox.setSizePolicy(sizePolicy6)
+        sizePolicy7.setHeightForWidth(self.volumeSpinBox.sizePolicy().hasHeightForWidth())
+        self.volumeSpinBox.setSizePolicy(sizePolicy7)
         self.volumeSpinBox.setMinimum(1)
         self.volumeSpinBox.setMaximum(26)
         self.volumeSpinBox.setValue(13)
@@ -331,8 +365,10 @@ class Ui_toolWindow(object):
         self.retranslateUi(toolWindow)
         self.playButton.clicked.connect(toolWindow.Play)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
 
+        self.ChooseLyricsButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ChooseLyrics)
+        self.ConvertTextButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ConvertText)
 
         QMetaObject.connectSlotsByName(toolWindow)
     # setupUi
@@ -340,12 +376,14 @@ class Ui_toolWindow(object):
     def retranslateUi(self, toolWindow):
         toolWindow.setWindowTitle(QCoreApplication.translate("toolWindow", u"Form", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("toolWindow", u"Navigate Key Input", None))
+        self.ChooseLyricsButton.setText(QCoreApplication.translate("toolWindow", u" Choose Lyrics File ", None))
+        self.ConvertTextButton.setText(QCoreApplication.translate("toolWindow", u" Convert Text ", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("toolWindow", u"Edit Lyrics Text", None))
         self.SelectShapeKeyGroupBox.setTitle(QCoreApplication.translate("toolWindow", u"Select ShapeKeys", None))
         self.label_2.setText(QCoreApplication.translate("toolWindow", u"Model ", None))
         self.selectModelButton.setText(QCoreApplication.translate("toolWindow", u"...", None))
         self.label_4.setText(QCoreApplication.translate("toolWindow", u"shape a :", None))
-        self.label_5.setText(QCoreApplication.translate("toolWindow", u"shape i : ", None))
+        self.label_5.setText(QCoreApplication.translate("toolWindow", u"shape  i : ", None))
         self.label_6.setText(QCoreApplication.translate("toolWindow", u"shape u : ", None))
         self.label_7.setText(QCoreApplication.translate("toolWindow", u"shape e : ", None))
         self.label_8.setText(QCoreApplication.translate("toolWindow", u"shape o : ", None))
