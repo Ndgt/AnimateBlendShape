@@ -1,6 +1,8 @@
 #coding: shift-jis
 
 from pyfbsdk import FBMessageBox
+import sys
+sys.path.append("..//..//..//AppData//Local//Programs//Python//Python311//Lib//site-packages")
 
 # function to read txt file
 def ReadLyrics(filename):
@@ -21,16 +23,16 @@ def ConvertLyrics(editortext, option):
     try:
         from pykakasi import kakasi
         kks = kakasi()
-        data = editortext.readlines()
         return_hiragana_string = ""
         return_alphabet_string = ""
 
+        data = editortext.split("\n")
         for words in data:
             if not words == "\n":
                 line = words.strip().replace(" ","").replace("？","").replace("！","")
                 # convert method of pykakasi module
                 result = kks.convert(line)
-                for i in range(len(line)):
+                for i in range(len(result)):
                     return_hiragana_string += result[i]["hira"] + "\n"
                     return_alphabet_string += result[i]["hepburn"] + "\n"
 
