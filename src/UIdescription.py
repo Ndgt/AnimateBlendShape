@@ -7,7 +7,9 @@ except:
     from PySide2 import QtWidgets
 
 from ui_mainwidget import Ui_toolWindow
+
 import test
+import text
 import makeList
 
 class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
@@ -35,23 +37,28 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.startframe = self.playcontrol.LoopStart.GetFrame()
         self.endframe = self.playcontrol.LoopStop.GetFrame()
 
+
+    '''
+    Lyrics Edit methods
+    '''
     def ChooseLyrics(self):
         self.lpopup = FBFilePopup()
         self.lpopup.Caption = "Select a file"
         self.lpopup.Style = FBFilePopupStyle.kFBFilePopupOpen
         self.lpopup.Filter = "*"
         self.lcheck = self.lpopup.Execute()
-        self.lineEdit_2.setFontPointSize(11)
         if self.lcheck:
+            # check if the file is text
             if self.lpopup.FileName[-4:] == ".txt":
-                f = open(self.lpopup.FileName, "r")
-                data = f.readlines()
-                for add_txt in data:
-                    self.lineEdit_2.insertPlainText("\n" + add_txt)
+                lyrics = text.ReadLyrics(self.lpopup.FileName)
+                for line in lyrics.split("\n"):
+                    self.lineEdit_2.append(line)
             else:
                 FBMessageBox("Caution","Error : Selected file is not text file.","OK")
 
-    #def ConvertText(self):
+    def ConvertText(self):
+        text.ConvertLyrics(self.lineEdit_2.toPlainText(),"hiragana")
+
 
 
     '''

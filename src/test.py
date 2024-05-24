@@ -1,9 +1,9 @@
 # coding: shift-jis
 
-import sys
+#import sys
 # rye環境なので追加
-sys.path.append(r"C:\Users\owner\AppData\Local\Programs\Python\Python311\Lib\site-packages")
-from pykakasi import kakasi
+#sys.path.append(r"C:\Users\owner\AppData\Local\Programs\Python\Python311\Lib\site-packages")
+#from pykakasi import kakasi
 
 args = sys.argv
 

@@ -99,6 +99,11 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+              </font>
+             </property>
             </widget>
            </item>
           </layout>
@@ -513,24 +518,7 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>playButton</sender>
-   <signal>clicked()</signal>
-   <receiver>toolWindow</receiver>
-   <slot>Play()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>489</x>
-     <y>279</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>440</x>
-     <y>347</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
  <slots>
   <slot>Play()</slot>
  </slots>
