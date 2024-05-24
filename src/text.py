@@ -26,15 +26,17 @@ def ConvertLyrics(editortext, option):
         return_hiragana_string = ""
         return_alphabet_string = ""
 
-        data = editortext.split("\n")
+        data = editortext.replace(" ","").replace("？","").replace("！","").split()
         for words in data:
             if not words == "\n":
-                line = words.strip().replace(" ","").replace("？","").replace("！","")
                 # convert method of pykakasi module
-                result = kks.convert(line)
+                result = kks.convert(words)
                 for i in range(len(result)):
-                    return_hiragana_string += result[i]["hira"] + "\n"
-                    return_alphabet_string += result[i]["hepburn"] + "\n"
+                    return_hiragana_string += result[i]["hira"]
+                    return_alphabet_string += result[i]["hepburn"]
+                # add new line 
+                return_hiragana_string += "\n"
+                return_alphabet_string += "\n"
 
         # return results
         if option == "hiragana":

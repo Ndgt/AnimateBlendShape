@@ -58,6 +58,7 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     def ConvertText(self):
         lyrics_converted = text.ConvertLyrics(self.lineEdit_2.toPlainText(),"hiragana")
         if not type(lyrics_converted) == ModuleNotFoundError:
+            self.lineEdit_2.clear()
             for line in lyrics_converted.split("\n"):
                 self.lineEdit_2.append(line)
 
