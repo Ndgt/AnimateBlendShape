@@ -32,7 +32,7 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
             self.comboBox_4.addItem(name)
             self.comboBox_5.addItem(name)
 
-        # player controls
+        # for player controls
         self.playcontrol = FBPlayerControl()
         self.startframe = self.playcontrol.LoopStart.GetFrame()
         self.endframe = self.playcontrol.LoopStop.GetFrame()
@@ -57,8 +57,10 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
                 FBMessageBox("Caution","Error : Selected file is not text file.","OK")
 
     def ConvertText(self):
-        text.ConvertLyrics(self.lineEdit_2.toPlainText(),"hiragana")
-
+        lyrics_converted = text.ConvertLyrics(self.lineEdit_2.toPlainText(),"hiragana")
+        if not type(lyrics_converted) == ModuleNotFoundError:
+            for line in lyrics_converted.split("\n"):
+                self.lineEdit_2.append(line)
 
 
     '''

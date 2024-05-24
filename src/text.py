@@ -2,6 +2,7 @@
 
 from pyfbsdk import FBMessageBox
 
+# function to read txt file
 def ReadLyrics(filename):
     f = open(filename, "r")
     data = f.readlines()
@@ -14,6 +15,7 @@ def ReadLyrics(filename):
     return return_string
 
 
+# function to convert QTextEdit strings 
 # option: hiragana / alphabet
 def ConvertLyrics(editortext, option):
     try:
@@ -29,15 +31,14 @@ def ConvertLyrics(editortext, option):
                 # convert method of pykakasi module
                 result = kks.convert(line)
                 for i in range(len(line)):
-                    return_hiragana_string += result[i]["hira"]
-                    return_alphabet_string += result[i]["hepburn"]
+                    return_hiragana_string += result[i]["hira"] + "\n"
+                    return_alphabet_string += result[i]["hepburn"] + "\n"
 
         # return results
         if option == "hiragana":
             return return_hiragana_string
         if option == "alphabet":
             return return_alphabet_string
-
 
 
     except ImportError as err:
