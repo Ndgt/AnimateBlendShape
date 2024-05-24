@@ -8,7 +8,6 @@ except:
 
 from ui_mainwidget import Ui_toolWindow
 
-import test
 import text
 import makeList
 

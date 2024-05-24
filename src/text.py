@@ -42,6 +42,5 @@ def ConvertLyrics(editortext, option):
 
 
     except ImportError as err:
-        FBMessageBox("Caution", "Error:modue \"pykakasi\" is not installed\n" \
-                     "Run \"pip install pykakasi\" in the Terminal")
+        FBMessageBox("Caution", "Error : modue \"pykakasi\" is not installed \n Run \"pip install pykakasi\" in the Terminal.", "OK")
         return err
