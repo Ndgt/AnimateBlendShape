@@ -15,6 +15,7 @@ sys.path.append(os.path.dirname(CurrentFilePath))
 # import file describes UI
 import UIdescription
 
+
 # declare WidgetHolder class object
 class WigHolder(FBWidgetHolder):
     # override C++ API WidgetCreate function
@@ -22,6 +23,7 @@ class WigHolder(FBWidgetHolder):
         self.HoldedWidgetObject = UIdescription.HoldedWidget(wrapInstance(pWigParent,
                                                              QtWidgets.QWidget))
         return getCppPointer(self.HoldedWidgetObject)[0]
+
 
 # declare as FBTool 
 class WigTool(FBTool):
@@ -53,6 +55,7 @@ class WigTool(FBTool):
         h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
         self.AddRegion("FCurveEditor", "FCurveEditor",x,y,w,h)
         self.SetControl("FCurveEditor", self.Editor)
+
 
 # define tool name
 toolName = "AnimateBlendShape"
