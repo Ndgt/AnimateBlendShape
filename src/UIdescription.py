@@ -36,6 +36,12 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.startframe = self.playcontrol.LoopStart.GetFrame()
         self.endframe = self.playcontrol.LoopStop.GetFrame()
 
+    '''
+    key input methods
+    '''
+    def SpaceKeyInput(self, eventKey):
+        self.lineEdit_2.append(eventKey.Key+" "+eventKey.X+" ",eventKey.Y)
+    
 
     '''
     Lyrics Edit methods

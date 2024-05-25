@@ -25,6 +25,7 @@ class WigHolder(FBWidgetHolder):
         return getCppPointer(self.HoldedWidgetObject)[0]
 
 
+
 # declare as FBTool 
 class WigTool(FBTool):
     def PopulateLayout(self):
@@ -35,6 +36,7 @@ class WigTool(FBTool):
         h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
         self.AddRegion("InputControl", "InputControl", x,y,w,h)
         self.SetControl("InputControl", self.WigHolderObject)
+        self.OnInput.Add(UIdescription.HoldedWidget.SpaceKeyInput)
 
     def __init__(self,name):
         super().__init__(name)
