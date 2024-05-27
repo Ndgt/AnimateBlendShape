@@ -7,6 +7,7 @@ except:
     from PySide2 import QtWidgets
     from shiboken2 import wrapInstance, getCppPointer
 
+
 # get file path for module import 
 import sys, os, inspect
 CurrentFilePath = inspect.currentframe().f_code.co_filename
@@ -24,10 +25,11 @@ class WigHolder(FBWidgetHolder):
                                                              QtWidgets.QWidget))
         return getCppPointer(self.HoldedWidgetObject)[0]
 
-
-
 # declare as FBTool 
 class WigTool(FBTool):
+    def SpaceKeyInput(self,control,event):
+        print(event.Key, event.X, event.Y)
+
     def PopulateLayout(self):
         # Secure Layout for Input Control / Qt 
         x = FBAddRegionParam(0, FBAttachType.kFBAttachLeft,"")
@@ -36,7 +38,7 @@ class WigTool(FBTool):
         h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
         self.AddRegion("InputControl", "InputControl", x,y,w,h)
         self.SetControl("InputControl", self.WigHolderObject)
-        self.OnInput.Add(UIdescription.HoldedWidget.SpaceKeyInput)
+        self.OnInput.Add(self.SpaceKeyInput)
 
     def __init__(self,name):
         super().__init__(name)

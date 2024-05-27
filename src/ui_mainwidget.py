@@ -9,7 +9,6 @@
 ################################################################################
 
 from PySide6 import QtCore
-
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
@@ -376,6 +375,7 @@ class Ui_toolWindow(object):
         self.playspeedSpinBox.connect(QtCore.SIGNAL("valueChanged(double)"),toolWindow.ChangePlaySpeed)
         self.playerhorizontalSlider.connect(QtCore.SIGNAL("valueChanged(int)"),toolWindow.PlayerSlide)
 
+
         QMetaObject.connectSlotsByName(toolWindow)
     # setupUi
 
@@ -400,6 +400,9 @@ class Ui_toolWindow(object):
         self.checkBox_5.setText(QCoreApplication.translate("toolWindow", u"Selected", None))
         self.PlayerControlGroupBox.setTitle(QCoreApplication.translate("toolWindow", u"Player Control", None))
         self.playButton.setText(QCoreApplication.translate("toolWindow", u"Play", None))
+#if QT_CONFIG(shortcut)
+        self.playButton.setShortcut(QCoreApplication.translate("toolWindow", u"Ctrl+S", None))
+#endif // QT_CONFIG(shortcut)
         self.label_3.setText(QCoreApplication.translate("toolWindow", u"Play Speed :", None))
         self.label.setText(QCoreApplication.translate("toolWindow", u"Volume :", None))
     # retranslateUi

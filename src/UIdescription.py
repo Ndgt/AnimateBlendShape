@@ -16,6 +16,9 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         super().__init__(pwidholder)
         self.setupUi(self)
 
+        self.sys = FBSystem()
+        self.UIhandle  = self.sys.OnUIIdle
+
         # add components of each comboBox
         self.comboBox.addItem("")
         self.comboBox_2.addItem("")
@@ -39,8 +42,9 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     '''
     key input methods
     '''
-    def SpaceKeyInput(self, eventKey):
-        self.lineEdit_2.append(eventKey.Key+" "+eventKey.X+" ",eventKey.Y)
+    
+    #def SpaceKeyInput(self, control, eventKey):
+    #    self.lineEdit_2.append(eventKey.Key+" "+eventKey.X+" ",eventKey.Y)
     
 
     '''
