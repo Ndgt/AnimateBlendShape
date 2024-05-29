@@ -72,12 +72,13 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
             # set vowel list
             vowels = ["a","i","u","e","o"]
             for line in lyrics_converted.split("\n"):
-                finalline = ""
+                finalline = " "
                 # omit consonant from line
                 for char in line:
-                    if char in vowels and not char == finalline[-1]:
-                        finalline += char
-                        self.lineEdit_2.append(line)
+                    finalline += char
+                    if char in vowels:
+                        finalline += "/"                
+                self.lineEdit_2.append(finalline)
 
 
     '''
