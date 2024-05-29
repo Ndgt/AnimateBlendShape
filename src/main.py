@@ -27,9 +27,6 @@ class WigHolder(FBWidgetHolder):
 
 # declare as FBTool 
 class WigTool(FBTool):
-    def SpaceKeyInput(self,control,event):
-        print(event.Key, event.X, event.Y)
-
     def PopulateLayout(self):
         # Secure Layout for Input Control / Qt 
         x = FBAddRegionParam(0, FBAttachType.kFBAttachLeft,"")
@@ -38,7 +35,6 @@ class WigTool(FBTool):
         h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
         self.AddRegion("InputControl", "InputControl", x,y,w,h)
         self.SetControl("InputControl", self.WigHolderObject)
-        self.OnInput.Add(self.SpaceKeyInput)
 
     def __init__(self,name):
         super().__init__(name)

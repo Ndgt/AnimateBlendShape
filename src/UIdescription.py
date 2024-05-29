@@ -12,6 +12,9 @@ import text
 import makeList
 
 class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
+    def SpaceKeyInput(self, control, eventKey):
+        self.lineEdit_2.append(eventKey.Key+" "+eventKey.X+" ",eventKey.Y)
+
     def __init__(self, pwidholder):
         super().__init__(pwidholder)
         self.setupUi(self)
@@ -39,13 +42,10 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.startframe = self.playcontrol.LoopStart.GetFrame()
         self.endframe = self.playcontrol.LoopStop.GetFrame()
 
-    '''
-    key input methods
-    '''
-    
-    #def SpaceKeyInput(self, control, eventKey):
-    #    self.lineEdit_2.append(eventKey.Key+" "+eventKey.X+" ",eventKey.Y)
-    
+        # for key inputs
+        self.playButton.OnInput.Add(self.SpaceKeyInput)
+ 
+
 
     '''
     Lyrics Edit methods
@@ -66,11 +66,18 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
                 FBMessageBox("Caution","Error : Selected file is not text file.","OK")
 
     def ConvertText(self):
-        lyrics_converted = text.ConvertLyrics(self.lineEdit_2.toPlainText(),"hiragana")
+        lyrics_converted = text.ConvertLyrics(self.lineEdit_2.toPlainText(),"alphabet")
         if not type(lyrics_converted) == ModuleNotFoundError:
             self.lineEdit_2.clear()
+            # set vowel list
+            vowels = ["a","i","u","e","o"]
             for line in lyrics_converted.split("\n"):
-                self.lineEdit_2.append(line)
+                finalline = ""
+                # omit consonant from line
+                for char in line:
+                    if char in vowels and not char == finalline[-1]:
+                        finalline += char
+                        self.lineEdit_2.append(line)
 
 
     '''
