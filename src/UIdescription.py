@@ -22,6 +22,11 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.sys = FBSystem()
         self.UIhandle  = self.sys.OnUIIdle
 
+        # add characters in comboBox
+        for chara in FBSystem().Scene.Characters:
+            self.CharaComboBox.addItem("")
+            self.
+
         # add components of each comboBox
         self.comboBox.addItem("")
         self.comboBox_2.addItem("")

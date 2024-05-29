@@ -19,8 +19,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDoubleSpinBox,
     QGroupBox, QHBoxLayout, QLabel, QTextEdit,
     QPushButton, QSizePolicy, QSlider, QSpacerItem,
-    QSpinBox, QTabWidget, QToolButton, QVBoxLayout,
-    QWidget)
+    QSpinBox, QTabWidget, QVBoxLayout, QWidget)
 
 class Ui_toolWindow(object):
     def setupUi(self, toolWindow):
@@ -113,7 +112,7 @@ class Ui_toolWindow(object):
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.horizontalLayout_10 = QHBoxLayout()
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.horizontalLayout_10.setContentsMargins(5, 0, 5, 5)
+        self.horizontalLayout_10.setContentsMargins(0, 0, 0, 5)
         self.label_2 = QLabel(self.SelectShapeKeyGroupBox)
         self.label_2.setObjectName(u"label_2")
         sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
@@ -125,20 +124,20 @@ class Ui_toolWindow(object):
 
         self.horizontalLayout_10.addWidget(self.label_2)
 
-        self.comboBox_6 = QComboBox(self.SelectShapeKeyGroupBox)
-        self.comboBox_6.setObjectName(u"comboBox_6")
+        self.CharaComboBox = QComboBox(self.SelectShapeKeyGroupBox)
+        self.CharaComboBox.setObjectName(u"CharaComboBox")
         sizePolicy4 = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Fixed)
         sizePolicy4.setHorizontalStretch(0)
         sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.comboBox_6.sizePolicy().hasHeightForWidth())
-        self.comboBox_6.setSizePolicy(sizePolicy4)
+        sizePolicy4.setHeightForWidth(self.CharaComboBox.sizePolicy().hasHeightForWidth())
+        self.CharaComboBox.setSizePolicy(sizePolicy4)
 
-        self.horizontalLayout_10.addWidget(self.comboBox_6)
+        self.horizontalLayout_10.addWidget(self.CharaComboBox)
 
-        self.selectModelButton = QToolButton(self.SelectShapeKeyGroupBox)
-        self.selectModelButton.setObjectName(u"selectModelButton")
+        self.pushButton = QPushButton(self.SelectShapeKeyGroupBox)
+        self.pushButton.setObjectName(u"pushButton")
 
-        self.horizontalLayout_10.addWidget(self.selectModelButton)
+        self.horizontalLayout_10.addWidget(self.pushButton)
 
 
         self.verticalLayout_9.addLayout(self.horizontalLayout_10)
@@ -374,13 +373,13 @@ class Ui_toolWindow(object):
 
         self.tabWidget.setCurrentIndex(1)
 
-
         self.playButton.clicked.connect(toolWindow.Play)
         self.ChooseLyricsButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ChooseLyrics)
         self.ToHiraganaButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ConvertText)
         self.ToAlphabetButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.SplitText)
         self.playspeedSpinBox.connect(QtCore.SIGNAL("valueChanged(double)"),toolWindow.ChangePlaySpeed)
         self.playerhorizontalSlider.connect(QtCore.SIGNAL("valueChanged(int)"),toolWindow.PlayerSlide)
+
 
         QMetaObject.connectSlotsByName(toolWindow)
     # setupUi
@@ -394,7 +393,7 @@ class Ui_toolWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("toolWindow", u"Edit Lyrics Text", None))
         self.SelectShapeKeyGroupBox.setTitle(QCoreApplication.translate("toolWindow", u"Select ShapeKeys", None))
         self.label_2.setText(QCoreApplication.translate("toolWindow", u"Character : ", None))
-        self.selectModelButton.setText(QCoreApplication.translate("toolWindow", u"...", None))
+        self.pushButton.setText(QCoreApplication.translate("toolWindow", u"Select All", None))
         self.label_4.setText(QCoreApplication.translate("toolWindow", u"shape a :", None))
         self.label_5.setText(QCoreApplication.translate("toolWindow", u"shape  i : ", None))
         self.label_6.setText(QCoreApplication.translate("toolWindow", u"shape u : ", None))
