@@ -9,7 +9,6 @@ except:
 from ui_mainwidget import Ui_toolWindow
 
 import text
-import makeList
 
 class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     def SpaceKeyInput(self, control, eventKey):
@@ -23,24 +22,11 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.UIhandle  = self.sys.OnUIIdle
 
         # add characters in comboBox
+        self.CharaComboBox.addItem("")
         for chara in FBSystem().Scene.Characters:
-            self.CharaComboBox.addItem("")
-            self.
-
-        # add components of each comboBox
-        self.comboBox.addItem("")
-        self.comboBox_2.addItem("")
-        self.comboBox_3.addItem("")
-        self.comboBox_4.addItem("")
-        self.comboBox_5.addItem("") 
-        
-        self.shapeList = makeList.ReturnList()
-        for name in self.shapeList:
-            self.comboBox.addItem(name)
-            self.comboBox_2.addItem(name)
-            self.comboBox_3.addItem(name)
-            self.comboBox_4.addItem(name)
-            self.comboBox_5.addItem(name)
+            self.CharaComboBox.addItem(chara)
+            self.CharaComboBox.setItemText(self.CharaComboBox.count,chara.Name)
+        self.CharaComboBox.currentIndexChanged().connect(self.updateComboBox)
 
         # for player controls
         self.playcontrol = FBPlayerControl()
@@ -50,6 +36,27 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         # for key inputs
         self.playButton.OnInput.Add(self.SpaceKeyInput)
  
+    def ReturnCharaShape(self, chara:FBCharacter, mList):
+        returnList = list()
+        chara.GetSkinModelList(mList)
+        for mesh in mList:
+            geo = mesh.Geometry
+            for i in range(geo.ShapeGetCount()):
+                name = geo.ShapeGetName(i)
+                if not name in returnList:
+                    returnList.append(name)
+        return returnList
+
+
+    def updateComboBox(self, index):
+        for cbox in [self.comboBox,
+                     self.comboBox_2,
+                     self.comboBox_3,
+                     self.comboBox_4,
+                     self.comboBox_5]:
+            cbox.clear()
+            for skey in self.ReturnCharaShape(self.CharaComboBox.currentData):
+                cbox.addItem(skey)
 
 
     '''
