@@ -73,7 +73,6 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
             for line in lyrics_converted.split("\n"):
                 self.LyricsText.append(line)
 
-
     def SplitText(self):
         lyrics_converted = text.ConvertLyrics(self.LyricsText.toPlainText(),"alphabet")
         if not type(lyrics_converted) == ModuleNotFoundError:

@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDoubleSpinBox,
-    QGroupBox, QHBoxLayout, QLabel, QLineEdit,
+    QGroupBox, QHBoxLayout, QLabel, QTextEdit,
     QPushButton, QSizePolicy, QSlider, QSpacerItem,
     QSpinBox, QTabWidget, QToolButton, QVBoxLayout,
     QWidget)
@@ -78,7 +78,7 @@ class Ui_toolWindow(object):
 
         self.verticalLayout_11.addLayout(self.horizontalLayout_2)
 
-        self.LyricsText = QLineEdit(self.tab_2)
+        self.LyricsText = QTextEdit(self.tab_2)
         self.LyricsText.setObjectName(u"LyricsText")
         sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         sizePolicy2.setHorizontalStretch(0)
