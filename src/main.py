@@ -6,7 +6,7 @@ try:
 except:
     from PySide2 import QtWidgets
     from shiboken2 import wrapInstance, getCppPointer
-
+    
 
 # get file path for module import 
 import sys, os, inspect

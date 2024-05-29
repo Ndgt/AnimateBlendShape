@@ -1,8 +1,6 @@
 #coding: shift-jis
 
 from pyfbsdk import FBMessageBox
-import sys
-sys.path.append("..//..//..//AppData//Local//Programs//Python//Python311//Lib//site-packages")
 
 # function to read txt file
 def ReadLyrics(filename):
@@ -46,5 +44,5 @@ def ConvertLyrics(editortext, option):
 
 
     except ImportError as err:
-        FBMessageBox("Caution", "Error : module \"pykakasi\" is not installed \n Run \"pip install pykakasi\" in the Terminal.", "OK")
+        FBMessageBox("Caution", "Error : module \"pykakasi\" is not installed \n Run \"mobupy -m pip install pykakasi\" in the Terminal as Administrator.", "OK")
         return err

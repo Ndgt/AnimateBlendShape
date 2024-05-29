@@ -24,9 +24,8 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         # add characters in comboBox
         self.CharaComboBox.addItem("")
         for chara in FBSystem().Scene.Characters:
-            self.CharaComboBox.addItem(chara)
-            self.CharaComboBox.setItemText(self.CharaComboBox.count,chara.Name)
-        self.CharaComboBox.currentIndexChanged().connect(self.updateComboBox)
+            self.CharaComboBox.addItem(chara.Name)
+        self.CharaComboBox.currentIndexChanged.connect(self.updateComboBox)
 
         # for player controls
         self.playcontrol = FBPlayerControl()
@@ -36,8 +35,10 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         # for key inputs
         self.playButton.OnInput.Add(self.SpaceKeyInput)
  
-    def ReturnCharaShape(self, chara:FBCharacter, mList):
+    def ReturnCharaShape(self):
+        mList = FBModelList()
         returnList = list()
+        chara = FBSystem().Scene.Characters.__getitem__(self.CharaComboBox.currentIndex()-1)
         chara.GetSkinModelList(mList)
         for mesh in mList:
             geo = mesh.Geometry
@@ -54,8 +55,9 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
                      self.comboBox_3,
                      self.comboBox_4,
                      self.comboBox_5]:
+            mlist = FBModelList()
             cbox.clear()
-            for skey in self.ReturnCharaShape(self.CharaComboBox.currentData):
+            for skey in self.ReturnCharaShape():
                 cbox.addItem(skey)
 
 
