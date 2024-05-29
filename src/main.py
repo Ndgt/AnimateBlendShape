@@ -17,7 +17,7 @@ sys.path.append(os.path.dirname(CurrentFilePath))
 import UIdescription
 
 
-# declare WidgetHolder class object
+#"C:\Users\owner\AppData\Local\Programs\Python\Python311\Scripts\pyside6-uic.exe" declare WidgetHolder class object
 class WigHolder(FBWidgetHolder):
     # override C++ API WidgetCreate function
     def WidgetCreate(self, pWigParent):

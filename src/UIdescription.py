@@ -13,7 +13,7 @@ import makeList
 
 class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     def SpaceKeyInput(self, control, eventKey):
-        self.lineEdit_2.append(eventKey.Key+" "+eventKey.X+" ",eventKey.Y)
+        self.LyricsText.append(eventKey.Key+" "+eventKey.X+" ",eventKey.Y)
 
     def __init__(self, pwidholder):
         super().__init__(pwidholder)
@@ -61,14 +61,23 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
             if self.lpopup.FileName[-4:] == ".txt":
                 lyrics = text.ReadLyrics(self.lpopup.FileName)
                 for line in lyrics.split("\n"):
-                    self.lineEdit_2.append(line)
+                    self.LyricsText.append(line)
             else:
                 FBMessageBox("Caution","Error : Selected file is not text file.","OK")
 
+
     def ConvertText(self):
-        lyrics_converted = text.ConvertLyrics(self.lineEdit_2.toPlainText(),"alphabet")
+        lyrics_converted = text.ConvertLyrics(self.LyricsText.toPlainText(),"hiragana")
         if not type(lyrics_converted) == ModuleNotFoundError:
-            self.lineEdit_2.clear()
+            self.LyricsText.clear()
+            for line in lyrics_converted.split("\n"):
+                self.LyricsText.append(line)
+
+
+    def SplitText(self):
+        lyrics_converted = text.ConvertLyrics(self.LyricsText.toPlainText(),"alphabet")
+        if not type(lyrics_converted) == ModuleNotFoundError:
+            self.LyricsText.clear()
             # set vowel list
             vowels = ["a","i","u","e","o"]
             for line in lyrics_converted.split("\n"):
@@ -78,8 +87,7 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
                     finalline += char
                     if char in vowels:
                         finalline += "/"                
-                self.lineEdit_2.append(finalline)
-
+                self.LyricsText.append(finalline)
 
     '''
     player control methods 

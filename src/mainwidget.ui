@@ -70,9 +70,16 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="ConvertTextButton">
+              <widget class="QPushButton" name="ToHiraganaButton">
                <property name="text">
-                <string> Convert Text </string>
+                <string> To Hiragana</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="ToAlphabetButton">
+               <property name="text">
+                <string>To Alphabet</string>
                </property>
               </widget>
              </item>
@@ -92,7 +99,7 @@
             </layout>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_2">
+            <widget class="QLineEdit" name="LyricsText">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
@@ -161,7 +168,7 @@
                  </sizepolicy>
                 </property>
                 <property name="text">
-                 <string>Model </string>
+                 <string>Character : </string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -169,7 +176,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="lineEdit">
+               <widget class="QComboBox" name="comboBox_6">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                   <horstretch>0</horstretch>

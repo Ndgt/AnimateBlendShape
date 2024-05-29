@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDoubleSpinBox,
-    QGroupBox, QHBoxLayout, QLabel, QLineEdit, QTextEdit,
+    QGroupBox, QHBoxLayout, QLabel, QLineEdit,
     QPushButton, QSizePolicy, QSlider, QSpacerItem,
     QSpinBox, QTabWidget, QToolButton, QVBoxLayout,
     QWidget)
@@ -61,10 +61,15 @@ class Ui_toolWindow(object):
 
         self.horizontalLayout_2.addWidget(self.ChooseLyricsButton)
 
-        self.ConvertTextButton = QPushButton(self.tab_2)
-        self.ConvertTextButton.setObjectName(u"ConvertTextButton")
+        self.ToHiraganaButton = QPushButton(self.tab_2)
+        self.ToHiraganaButton.setObjectName(u"ToHiraganaButton")
 
-        self.horizontalLayout_2.addWidget(self.ConvertTextButton)
+        self.horizontalLayout_2.addWidget(self.ToHiraganaButton)
+
+        self.ToAlphabetButton = QPushButton(self.tab_2)
+        self.ToAlphabetButton.setObjectName(u"ToAlphabetButton")
+
+        self.horizontalLayout_2.addWidget(self.ToAlphabetButton)
 
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
@@ -73,18 +78,18 @@ class Ui_toolWindow(object):
 
         self.verticalLayout_11.addLayout(self.horizontalLayout_2)
 
-        self.lineEdit_2 = QTextEdit(self.tab_2)
-        self.lineEdit_2.setObjectName(u"lineEdit_2")
+        self.LyricsText = QLineEdit(self.tab_2)
+        self.LyricsText.setObjectName(u"LyricsText")
         sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.lineEdit_2.sizePolicy().hasHeightForWidth())
-        self.lineEdit_2.setSizePolicy(sizePolicy2)
+        sizePolicy2.setHeightForWidth(self.LyricsText.sizePolicy().hasHeightForWidth())
+        self.LyricsText.setSizePolicy(sizePolicy2)
         font = QFont()
         font.setPointSize(11)
-        self.lineEdit_2.setFont(font)
+        self.LyricsText.setFont(font)
 
-        self.verticalLayout_11.addWidget(self.lineEdit_2)
+        self.verticalLayout_11.addWidget(self.LyricsText)
 
 
         self.verticalLayout_12.addLayout(self.verticalLayout_11)
@@ -120,15 +125,15 @@ class Ui_toolWindow(object):
 
         self.horizontalLayout_10.addWidget(self.label_2)
 
-        self.lineEdit = QLineEdit(self.SelectShapeKeyGroupBox)
-        self.lineEdit.setObjectName(u"lineEdit")
+        self.comboBox_6 = QComboBox(self.SelectShapeKeyGroupBox)
+        self.comboBox_6.setObjectName(u"comboBox_6")
         sizePolicy4 = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.Fixed)
         sizePolicy4.setHorizontalStretch(0)
         sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.lineEdit.sizePolicy().hasHeightForWidth())
-        self.lineEdit.setSizePolicy(sizePolicy4)
+        sizePolicy4.setHeightForWidth(self.comboBox_6.sizePolicy().hasHeightForWidth())
+        self.comboBox_6.setSizePolicy(sizePolicy4)
 
-        self.horizontalLayout_10.addWidget(self.lineEdit)
+        self.horizontalLayout_10.addWidget(self.comboBox_6)
 
         self.selectModelButton = QToolButton(self.SelectShapeKeyGroupBox)
         self.selectModelButton.setObjectName(u"selectModelButton")
@@ -369,12 +374,13 @@ class Ui_toolWindow(object):
 
         self.tabWidget.setCurrentIndex(1)
 
+
         self.playButton.clicked.connect(toolWindow.Play)
         self.ChooseLyricsButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ChooseLyrics)
-        self.ConvertTextButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ConvertText)
+        self.ToHiraganaButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.ConvertText)
+        self.ToAlphabetButton.connect(QtCore.SIGNAL("clicked()"),toolWindow.SplitText)
         self.playspeedSpinBox.connect(QtCore.SIGNAL("valueChanged(double)"),toolWindow.ChangePlaySpeed)
         self.playerhorizontalSlider.connect(QtCore.SIGNAL("valueChanged(int)"),toolWindow.PlayerSlide)
-
 
         QMetaObject.connectSlotsByName(toolWindow)
     # setupUi
@@ -383,10 +389,11 @@ class Ui_toolWindow(object):
         toolWindow.setWindowTitle(QCoreApplication.translate("toolWindow", u"Form", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("toolWindow", u"Navigate Key Input", None))
         self.ChooseLyricsButton.setText(QCoreApplication.translate("toolWindow", u" Choose Lyrics File ", None))
-        self.ConvertTextButton.setText(QCoreApplication.translate("toolWindow", u" Convert Text ", None))
+        self.ToHiraganaButton.setText(QCoreApplication.translate("toolWindow", u" To Hiragana", None))
+        self.ToAlphabetButton.setText(QCoreApplication.translate("toolWindow", u"To Alphabet", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("toolWindow", u"Edit Lyrics Text", None))
         self.SelectShapeKeyGroupBox.setTitle(QCoreApplication.translate("toolWindow", u"Select ShapeKeys", None))
-        self.label_2.setText(QCoreApplication.translate("toolWindow", u"Model ", None))
+        self.label_2.setText(QCoreApplication.translate("toolWindow", u"Character : ", None))
         self.selectModelButton.setText(QCoreApplication.translate("toolWindow", u"...", None))
         self.label_4.setText(QCoreApplication.translate("toolWindow", u"shape a :", None))
         self.label_5.setText(QCoreApplication.translate("toolWindow", u"shape  i : ", None))
