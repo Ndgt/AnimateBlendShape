@@ -3,16 +3,20 @@ from pyfbsdk_additions import*
 
 try:
     from PySide6 import QtWidgets
+    from PySide6.QtCore import Qt
+
 except:
     from PySide2 import QtWidgets
+    from PySide2.QtCore import Qt
 
 from ui_mainwidget import Ui_toolWindow
 
 import text
 
 class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
-    def SpaceKeyInput(self, control, eventKey):
-        self.LyricsText.append(eventKey.Key+" "+eventKey.X+" ",eventKey.Y)
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Tab:
+            self.LyricsText.append("space pushed")
 
     def __init__(self, pwidholder):
         super().__init__(pwidholder)
