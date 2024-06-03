@@ -14,10 +14,6 @@ from ui_mainwidget import Ui_toolWindow
 import text
 
 class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
-    def keyPressEvent(self, event):
-        if event.key() == Qt.Key_Tab:
-            self.LyricsText.append("space pushed")
-
     def __init__(self, pwidholder):
         super().__init__(pwidholder)
         self.setupUi(self)
@@ -35,9 +31,6 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.playcontrol = FBPlayerControl()
         self.startframe = self.playcontrol.LoopStart.GetFrame()
         self.endframe = self.playcontrol.LoopStop.GetFrame()
-
-        # for key inputs
-        self.playButton.OnInput.Add(self.SpaceKeyInput)
  
     def ReturnCharaShape(self):
         mList = FBModelList()

@@ -21,6 +21,14 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDoubleSpinBo
     QPushButton, QSizePolicy, QSlider, QSpacerItem,
     QSpinBox, QTabWidget, QVBoxLayout, QWidget)
 
+
+class SpaceKeyEvent(QTextEdit):
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Space:
+            self.insertPlainText("space pushed")
+        else:
+            super().keyPressEvent(event)
+
 class Ui_toolWindow(object):
     def setupUi(self, toolWindow):
         if not toolWindow.objectName():
@@ -77,7 +85,7 @@ class Ui_toolWindow(object):
 
         self.verticalLayout_11.addLayout(self.horizontalLayout_2)
 
-        self.LyricsText = QTextEdit(self.tab_2)
+        self.LyricsText = SpaceKeyEvent(self.tab_2)
         self.LyricsText.setObjectName(u"LyricsText")
         sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         sizePolicy2.setHorizontalStretch(0)
