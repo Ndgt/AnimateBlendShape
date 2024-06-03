@@ -1,4 +1,4 @@
-#coding: shift-jis
+# -*- coding: utf-8
 
 from pyfbsdk import FBMessageBox
 
@@ -24,7 +24,7 @@ def ConvertLyrics(editortext, option):
         return_hiragana_string = ""
         return_alphabet_string = ""
 
-        data = editortext.replace(" ","").replace("ÅH","").replace("ÅI","").split()
+        data = editortext.replace(" ","").replace("Ôºü","").replace("ÔºÅ","").split()
         for words in data:
             if not words == "\n":
                 # convert method of pykakasi module

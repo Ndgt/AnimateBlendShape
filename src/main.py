@@ -1,3 +1,5 @@
+# -*- coding: utf-8
+
 from pyfbsdk import*
 from pyfbsdk_additions import*
 try:

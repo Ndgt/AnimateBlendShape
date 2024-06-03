@@ -1,3 +1,5 @@
+# -*- coding: utf-8
+
 from pyfbsdk import*
 from pyfbsdk_additions import*
 
@@ -11,15 +13,12 @@ except:
 
 from ui_mainwidget import Ui_toolWindow
 
-import text
+import L_Edit
 
 class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     def __init__(self, pwidholder):
         super().__init__(pwidholder)
         self.setupUi(self)
-
-        self.sys = FBSystem()
-        self.UIhandle  = self.sys.OnUIIdle
 
         # add characters in comboBox
         self.CharaComboBox.addItem("")
@@ -31,11 +30,19 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.playcontrol = FBPlayerControl()
         self.startframe = self.playcontrol.LoopStart.GetFrame()
         self.endframe = self.playcontrol.LoopStop.GetFrame()
- 
+
+
+    '''
+    character shapekey methods
+    '''
+    # return All shapekey name in character user selected
     def ReturnCharaShape(self):
         mList = FBModelList()
-        returnList = list()
+        returnList = []
+        # get current selected character
         chara = FBSystem().Scene.Characters.__getitem__(self.CharaComboBox.currentIndex()-1)
+        
+        # get all meshes related to the character
         chara.GetSkinModelList(mList)
         for mesh in mList:
             geo = mesh.Geometry
@@ -46,31 +53,35 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         return returnList
 
 
+    # update character combobox when user select new item
     def updateComboBox(self, index):
-        for cbox in [self.comboBox,
-                     self.comboBox_2,
-                     self.comboBox_3,
-                     self.comboBox_4,
-                     self.comboBox_5]:
-            mlist = FBModelList()
+        comboboxes = [self.comboBox,
+                      self.comboBox_2,
+                      self.comboBox_3,
+                      self.comboBox_4,
+                      self.comboBox_5]
+        for cbox in comboboxes:
             cbox.clear()
-            for skey in self.ReturnCharaShape():
-                cbox.addItem(skey)
+            for shapekey in self.ReturnCharaShape():
+                cbox.addItem(shapekey)
 
 
     '''
     Lyrics Edit methods
     '''
     def ChooseLyrics(self):
+        # display popup to select a file
         self.lpopup = FBFilePopup()
         self.lpopup.Caption = "Select a file"
         self.lpopup.Style = FBFilePopupStyle.kFBFilePopupOpen
         self.lpopup.Filter = "*"
         self.lcheck = self.lpopup.Execute()
+
         if self.lcheck:
-            # check if the file is text
+            # check if the file is text file
             if self.lpopup.FileName[-4:] == ".txt":
-                lyrics = text.ReadLyrics(self.lpopup.FileName)
+
+                lyrics = L_Edit.ReadLyrics(self.lpopup.FileName)
                 for line in lyrics.split("\n"):
                     self.LyricsText.append(line)
             else:
@@ -78,14 +89,14 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
 
 
     def ConvertText(self):
-        lyrics_converted = text.ConvertLyrics(self.LyricsText.toPlainText(),"hiragana")
+        lyrics_converted = L_Edit.ConvertLyrics(self.LyricsText.toPlainText(),"hiragana")
         if not type(lyrics_converted) == ModuleNotFoundError:
             self.LyricsText.clear()
             for line in lyrics_converted.split("\n"):
                 self.LyricsText.append(line)
 
     def SplitText(self):
-        lyrics_converted = text.ConvertLyrics(self.LyricsText.toPlainText(),"alphabet")
+        lyrics_converted = L_Edit.ConvertLyrics(self.LyricsText.toPlainText(),"alphabet")
         if not type(lyrics_converted) == ModuleNotFoundError:
             self.LyricsText.clear()
             # set vowel list
