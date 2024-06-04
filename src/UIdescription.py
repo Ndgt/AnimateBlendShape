@@ -4,27 +4,25 @@ from pyfbsdk import*
 from pyfbsdk_additions import*
 
 try:
+    # for MotionBuilder 2025
     from PySide6 import QtWidgets
     from PySide6.QtCore import Qt
 
 except:
+    # for MotionBuilder -2024
     from PySide2 import QtWidgets
     from PySide2.QtCore import Qt
 
-from ui_mainwidget import Ui_toolWindow
 
+# import original modules
+from ui_mainwidget import Ui_toolWindow
 import L_Edit
+
 
 class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     def __init__(self, pwidholder):
         super().__init__(pwidholder)
         self.setupUi(self)
-
-        # add characters in comboBox
-        self.CharaComboBox.addItem("")
-        for chara in FBSystem().Scene.Characters:
-            self.CharaComboBox.addItem(chara.Name)
-        self.CharaComboBox.currentIndexChanged.connect(self.updateComboBox)
 
         self.comboboxes = [self.comboBox,
                            self.comboBox_2,
@@ -37,10 +35,19 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
                            self.checkBox_3,
                            self.checkBox_4,
                            self.checkBox_5]
-        
+
+        # add characters in comboBox
+        self.CharaComboBox.addItem("")
+        for chara in FBSystem().Scene.Characters:
+            self.CharaComboBox.addItem(chara.Name)
+        self.CharaComboBox.currentIndexChanged.connect(self.updateComboBox)
+        self.CharaComboBox.currentIndexChanged.connect(self.resetAllCheckbox)
+
         # connect signal with each checkbox
         for chbox in self.checkboxes:
-            chbox.stateChanged.connect(lambda state, name: self.showFCurve(state, name))
+            for cobox in self.comboboxes:
+                # send current combobox item when checkbox marked
+                chbox.stateChanged.connect(lambda state, name = cobox.currentText(): self.showFCurve(self, state, name))
 
         # for player controls
         self.playcontrol = FBPlayerControl()
@@ -76,6 +83,11 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
             for shapekey in self.ReturnCharaShape():
                 cobox.addItem(shapekey)
 
+    # reset all checkbox when character selection is changed
+    def resetAllCheckbox(self):
+        for chbox in self.checkboxes:
+            chbox.setCheckState(False)
+
 
     # make the shapekey selected, and show in FCurve Editor
     # when the checkbox marked
@@ -88,7 +100,7 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
             prop = mesh.PropertyList.Find(name)
             plist.append(prop)
 
-        if state == 2: 
+        if state == 2: # if checkbox is marked
             for shapekey in plist:
                 shapekey.SetFocus(True)
         else:
