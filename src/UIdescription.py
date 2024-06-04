@@ -26,6 +26,22 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
             self.CharaComboBox.addItem(chara.Name)
         self.CharaComboBox.currentIndexChanged.connect(self.updateComboBox)
 
+        self.comboboxes = [self.comboBox,
+                           self.comboBox_2,
+                           self.comboBox_3,
+                           self.comboBox_4,
+                           self.comboBox_5]
+        
+        self.checkboxes = [self.checkBox,
+                           self.checkBox_2,
+                           self.checkBox_3,
+                           self.checkBox_4,
+                           self.checkBox_5]
+        
+        # connect signal with each checkbox
+        for chbox in self.checkboxes:
+            chbox.stateChanged.connect(lambda state, name: self.showFCurve(state, name))
+
         # for player controls
         self.playcontrol = FBPlayerControl()
         self.startframe = self.playcontrol.LoopStart.GetFrame()
@@ -54,16 +70,30 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
 
 
     # update character combobox when user select new item
-    def updateComboBox(self, index):
-        comboboxes = [self.comboBox,
-                      self.comboBox_2,
-                      self.comboBox_3,
-                      self.comboBox_4,
-                      self.comboBox_5]
-        for cbox in comboboxes:
-            cbox.clear()
+    def updateComboBox(self):
+        for cobox in self.comboboxes:
+            cobox.clear()
             for shapekey in self.ReturnCharaShape():
-                cbox.addItem(shapekey)
+                cobox.addItem(shapekey)
+
+
+    # make the shapekey selected, and show in FCurve Editor
+    # when the checkbox marked
+    def showFCurve(self, state, name):
+        chara = FBSystem().Scene.Characters.__getitem__(self.CharaComboBox.currentIndex()-1)
+        mList = FBModelList()
+        chara.GetSkinModelList(mList)
+        plist = []
+        for mesh in mList:
+            prop = mesh.PropertyList.Find(name)
+            plist.append(prop)
+
+        if state == 2: 
+            for shapekey in plist:
+                shapekey.SetFocus(True)
+        else:
+            for shapekey in plist:
+                shapekey.SetFocus(False)
 
 
     '''
@@ -139,3 +169,4 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
             self.playcontrol.Play()
         else:
             self.playcontrol.Goto(FBTime(0,0,0,specified_frame))
+

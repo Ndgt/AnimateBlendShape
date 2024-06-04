@@ -19,12 +19,11 @@ sys.path.append(os.path.dirname(CurrentFilePath))
 import UIdescription
 
 
-#"C:\Users\owner\AppData\Local\Programs\Python\Python311\Scripts\pyside6-uic.exe" declare WidgetHolder class object
-class WigHolder(FBWidgetHolder):
+# define WidgetHolder class object
+class WidgetHolder(FBWidgetHolder):
     # override C++ API WidgetCreate function
     def WidgetCreate(self, pWigParent):
-        self.HoldedWidgetObject = UIdescription.HoldedWidget(wrapInstance(pWigParent,
-                                                             QtWidgets.QWidget))
+        self.HoldedWidgetObject = UIdescription.HoldedWidget(wrapInstance(pWigParent, QtWidgets.QWidget))
         return getCppPointer(self.HoldedWidgetObject)[0]
 
 # declare as FBTool 
@@ -36,15 +35,16 @@ class WigTool(FBTool):
         w = FBAddRegionParam(0, FBAttachType.kFBAttachRight,"")
         h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
         self.AddRegion("InputControl", "InputControl", x,y,w,h)
-        self.SetControl("InputControl", self.WigHolderObject)
+        self.SetControl("InputControl", self.WidgetHolderObject)
 
     def __init__(self,name):
         super().__init__(name)
-        self.WigHolderObject = WigHolder()
+        self.WidgetHolderObject = WidgetHolder()
         self.PopulateLayout()
         self.StartSizeX = 900
         self.StartSizeY = 600
         self.Editor = FBFCurveEditor()
+        
         self.face = FBFindModelByLabelName("Face")
         self.aprop = self.face.PropertyList.Find("a",False)
         self.pNode = self.aprop.GetAnimationNode()
