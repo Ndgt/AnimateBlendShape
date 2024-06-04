@@ -44,12 +44,14 @@ class WigTool(FBTool):
         self.StartSizeX = 900
         self.StartSizeY = 600
         self.Editor = FBFCurveEditor()
-        
+
+        '''        
         self.face = FBFindModelByLabelName("Face")
         self.aprop = self.face.PropertyList.Find("a",False)
         self.pNode = self.aprop.GetAnimationNode()
         self.Editor.AddProperty(self.aprop)
- 
+        '''
+        
         # Secure Layout for FBFCurvesEditor
         x = FBAddRegionParam(0, FBAttachType.kFBAttachLeft,"")
         y = FBAddRegionParam(360, FBAttachType.kFBAttachTop,"")

@@ -46,10 +46,9 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.CharaComboBox.currentIndexChanged.connect(self.resetAllCheckbox)
 
         # connect signal with each checkbox
-        for chbox in self.checkboxes:
-            for cobox in self.comboboxes:
-                # send current combobox item when checkbox marked
-                chbox.stateChanged.connect(lambda state, name = cobox.currentText(): self.showFCurve(self, state, name))
+        for i in range(5):
+            # send current combobox item when checkbox marked
+            self.checkboxes[i].stateChanged.connect(lambda state, name = self.comboboxes[i].currentText: self.showFCurve(state, name))
 
         # for player controls
         self.playcontrol = FBPlayerControl()
@@ -88,7 +87,7 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     # reset all checkbox when character selection is changed
     def resetAllCheckbox(self):
         for chbox in self.checkboxes:
-            chbox.setCheckState(False)
+            chbox.setChecked(False)
 
 
     # make the shapekey selected, and show in FCurve Editor
@@ -101,8 +100,9 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
 
         # Serach all shapekey propertis in the selected character
         for mesh in mList:
-            prop = mesh.PropertyList.Find(name)
-            plist.append(prop)
+            prop = mesh.PropertyList.Find(name())
+            if not prop is None:
+                plist.append(prop)
 
         # change checkbox state
         if state == 2: # if checkbox is marked
@@ -111,6 +111,13 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         else:
             for shapekey in plist:
                 shapekey.SetFocus(False)
+        
+        '''        
+        self.face = FBFindModelByLabelName("Face")
+        self.aprop = self.face.PropertyList.Find("a",False)
+        self.pNode = self.aprop.GetAnimationNode()
+        self.Editor.AddProperty(self.aprop)
+        '''
 
 
     '''
