@@ -40,6 +40,8 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.CharaComboBox.addItem("")
         for chara in FBSystem().Scene.Characters:
             self.CharaComboBox.addItem(chara.Name)
+
+        # connect signal with CharaComboBox
         self.CharaComboBox.currentIndexChanged.connect(self.updateComboBox)
         self.CharaComboBox.currentIndexChanged.connect(self.resetAllCheckbox)
 
@@ -59,7 +61,7 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
     character shapekey methods
     '''
     # return All shapekey name in character user selected
-    def ReturnCharaShape(self):
+    def ReturnCharaShape(self) -> list:
         mList = FBModelList()
         returnList = []
         # get current selected character
@@ -91,15 +93,18 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
 
     # make the shapekey selected, and show in FCurve Editor
     # when the checkbox marked
-    def showFCurve(self, state, name):
+    def showFCurve(self, state:bool, name:str):
         chara = FBSystem().Scene.Characters.__getitem__(self.CharaComboBox.currentIndex()-1)
         mList = FBModelList()
         chara.GetSkinModelList(mList)
         plist = []
+
+        # Serach all shapekey propertis in the selected character
         for mesh in mList:
             prop = mesh.PropertyList.Find(name)
             plist.append(prop)
 
+        # change checkbox state
         if state == 2: # if checkbox is marked
             for shapekey in plist:
                 shapekey.SetFocus(True)
@@ -148,6 +153,7 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
                 # omit consonant from line
                 for char in line:
                     finalline += char
+                    # split line with a slash for each vowerl
                     if char in vowels:
                         finalline += "/"                
                 self.LyricsText.append(finalline)
@@ -161,18 +167,18 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         else:
             self.playcontrol.Play()
 
-    def ChangePlaySpeed(self, spindouble):
+    def ChangePlaySpeed(self, spinboxValue:float):
         # if isPlaying, change speed and restart
         if self.playcontrol.IsPlaying:
             self.playcontrol.Stop()
-            self.playcontrol.SetPlaySpeed(spindouble)
+            self.playcontrol.SetPlaySpeed(spinboxValue)
             self.playcontrol.Play()
         else:
-            self.playcontrol.SetPlaySpeed(spindouble)
+            self.playcontrol.SetPlaySpeed(spinboxValue)
 
-    def PlayerSlide(self, sliderint):
+    def PlayerSlide(self, sliderValue:int):
         # slider returns int : 0 ~ 99
-        specified_frame_double = (self.endframe - self.startframe) * (sliderint / 100)
+        specified_frame_double = (self.endframe - self.startframe) * (sliderValue / 100)
         specified_frame = int(specified_frame_double)
         # restart if isPlaying
         if self.playcontrol.IsPlaying:
@@ -181,4 +187,3 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
             self.playcontrol.Play()
         else:
             self.playcontrol.Goto(FBTime(0,0,0,specified_frame))
-
