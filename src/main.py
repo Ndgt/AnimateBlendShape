@@ -43,7 +43,7 @@ class WigTool(FBTool):
         self.PopulateLayout()
         self.StartSizeX = 900
         self.StartSizeY = 600
-        self.Editor = FBFCurveEditor()
+        #self.Editor = FBFCurveEditor()
 
         '''        
         self.face = FBFindModelByLabelName("Face")
@@ -51,7 +51,7 @@ class WigTool(FBTool):
         self.pNode = self.aprop.GetAnimationNode()
         self.Editor.AddProperty(self.aprop)
         '''
-        
+        '''
         # Secure Layout for FBFCurvesEditor
         x = FBAddRegionParam(0, FBAttachType.kFBAttachLeft,"")
         y = FBAddRegionParam(360, FBAttachType.kFBAttachTop,"")
@@ -59,7 +59,7 @@ class WigTool(FBTool):
         h = FBAddRegionParam(0, FBAttachType.kFBAttachBottom,"")
         self.AddRegion("FCurveEditor", "FCurveEditor",x,y,w,h)
         self.SetControl("FCurveEditor", self.Editor)
-
+        '''
 
 # define tool name
 toolName = "AnimateBlendShape"

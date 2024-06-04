@@ -24,13 +24,13 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         super().__init__(pwidholder)
         self.setupUi(self)
 
-        self.comboboxes = [self.comboBox,
+        self.comboboxes = [self.comboBox_1,
                            self.comboBox_2,
                            self.comboBox_3,
                            self.comboBox_4,
                            self.comboBox_5]
         
-        self.checkboxes = [self.checkBox,
+        self.checkboxes = [self.checkBox_1,
                            self.checkBox_2,
                            self.checkBox_3,
                            self.checkBox_4,
@@ -54,6 +54,9 @@ class HoldedWidget(QtWidgets.QWidget, Ui_toolWindow):
         self.playcontrol = FBPlayerControl()
         self.startframe = self.playcontrol.LoopStart.GetFrame()
         self.endframe = self.playcontrol.LoopStop.GetFrame()
+
+        # for FBFCurveEditor
+        self.CEditor = FBFCurveEditor()
 
 
     '''
